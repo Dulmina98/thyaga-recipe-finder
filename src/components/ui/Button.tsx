@@ -1,4 +1,5 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'dark' | 'outline' | 'ghost' | 'icon';
@@ -30,7 +31,6 @@ export const Button: React.FC<ButtonProps> = ({
     icon: 'p-2.5',
   };
 
-  // Primary needs inline style for exact brand color + hover
   const primaryStyle = variant === 'primary' ? { backgroundColor: '#E8500B' } : {};
 
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;

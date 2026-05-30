@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Navigation } from '../components/Navigation';
-import { Footer } from '../components/Footer';
 import { ArrowRight } from '@phosphor-icons/react';
 import { TEAM, VALUES, MILESTONES, STATS, PRESS } from '../data/aboutMockData';
 
@@ -45,7 +43,6 @@ export const AboutPage: React.FC = () => {
 
   return (
     <div className="min-h-screen font-sans bg-[#FAF6EF]">
-      <Navigation />
 
       <section className="pt-16 bg-[#FAF6EF]">
         <div className="layout-container">
@@ -295,9 +292,6 @@ export const AboutPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
-
     </div>
   );
 };
