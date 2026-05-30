@@ -28,7 +28,7 @@ export const WhySection: React.FC = () => {
               RecipeFinder isn't just a recipe database. It's a living, breathing culinary companion that learns your palate, respects your pantry, and elevates your cooking — one dish at a time.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
             {stats.map((stat, i) => {
               const { bg, valuColor, labelColor } = statBoxColors[i];
               return (

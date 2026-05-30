@@ -15,9 +15,9 @@ export const CTASection: React.FC = () => {
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-charcoal" >
             Join 50,000+ home cooks discovering new flavors every day. Free forever. No credit card required.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-4">
-            <Button variant="primary" size="lg">Get Started Free</Button>
-            <Button variant="outline" size="lg">Browse Recipes</Button>
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button variant="primary" size="lg" className="w-full sm:w-auto">Get Started Free</Button>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto">Browse Recipes</Button>
           </div>
         </div>
       </div>
