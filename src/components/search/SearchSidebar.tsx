@@ -39,7 +39,7 @@ export const SearchSidebar: React.FC<SearchSidebarProps> = ({
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const filterContent = (
+  const renderFilterContent = (idPrefix: string) => (
     <div className="p-6">
 
       <FilterSection title="Meal Type">
@@ -61,7 +61,7 @@ export const SearchSidebar: React.FC<SearchSidebarProps> = ({
           <label key={opt} className="flex items-center gap-3 mb-2.5 cursor-pointer text-sm text-[#1a1a1a]">
             <input
               type="radio"
-              name="cookTime"
+              name={`cookTime-${idPrefix}`}
               checked={cookTime === opt}
               onChange={() => setCookTime(opt)}
               className="w-4 h-4 accent-[#E8500B] cursor-pointer"
@@ -139,7 +139,7 @@ export const SearchSidebar: React.FC<SearchSidebarProps> = ({
           {mobileOpen ? <CaretUp size={14} weight="bold" /> : <CaretDown size={14} weight="bold" />}
         </button>
         {mobileOpen && (
-          <div className="border-t-2 border-[#1a1a1a]">{filterContent}</div>
+          <div className="border-t-2 border-[#1a1a1a]">{renderFilterContent('mobile')}</div>
         )}
       </div>
 
@@ -149,7 +149,7 @@ export const SearchSidebar: React.FC<SearchSidebarProps> = ({
           <div className="px-6 pt-6 pb-2 flex items-center gap-2 text-sm font-bold text-[#1a1a1a] uppercase tracking-wider">
             <Faders size={16} weight="bold" /> Filter Results
           </div>
-          {filterContent}
+          {renderFilterContent('desktop')}
         </div>
       </aside>
     </>
