@@ -3,7 +3,6 @@ import { Navigation } from '../components/Navigation';
 import { ArrowRight } from '@phosphor-icons/react';
 import { TEAM, VALUES, MILESTONES, STATS, PRESS } from '../data/aboutMockData';
 
-// ─── Team Card ────────────────────────────────────────────────────────────────
 const TeamCard: React.FC<{ member: typeof TEAM[0] }> = ({ member }) => {
   const [hovered, setHovered] = useState(false);
   return (
@@ -39,7 +38,6 @@ const TeamCard: React.FC<{ member: typeof TEAM[0] }> = ({ member }) => {
   );
 };
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
 export const AboutPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
