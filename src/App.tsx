@@ -3,6 +3,7 @@ import { LandingPage } from './pages/LandingPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import FavouritesPage from './pages/FavouritesPage';
 import AboutPage from './pages/AboutPage';
+import RecipeDetailPage from './pages/RecipeDetailPage';
 import './App.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/search" element={<SearchResultsPage />} />
         <Route path="/favourites" element={<FavouritesPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/recipe" element={<RecipeDetailPage />} />
       </Routes>
     </Router>
   );

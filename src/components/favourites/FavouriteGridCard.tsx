@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Heart, Clock, Fire } from '@phosphor-icons/react';
+import { useNavigate } from 'react-router-dom';
 import type { Recipe } from '../../data/favouritesMockData';
 
 export const FavouriteGridCard: React.FC<{ recipe: Recipe; onRemove: (id: number) => void }> = ({ recipe, onRemove }) => {
   const [hovered, setHovered] = useState(false);
   const [removing, setRemoving] = useState(false);
+  const navigate = useNavigate();
 
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -14,6 +16,7 @@ export const FavouriteGridCard: React.FC<{ recipe: Recipe; onRemove: (id: number
 
   return (
     <article
+      onClick={() => navigate('/recipe')}
       className="flex flex-col overflow-hidden border border-[#1a1a1a] bg-white transition-all duration-300 cursor-pointer"
       style={{
         boxShadow: hovered ? '6px 6px 0px #1a1a1a' : 'none',
@@ -61,12 +64,11 @@ export const FavouriteGridCard: React.FC<{ recipe: Recipe; onRemove: (id: number
 
         <div className="mt-4 flex items-center justify-between border-t border-[#F0EAE0] pt-4">
           <span className="text-[11px] text-[#1a1a1a] opacity-50">{recipe.savedDate}</span>
-          <a
-            href="#"
+          <span
             className="border border-[#1a1a1a] px-4 py-1.5 text-xs font-semibold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-white"
           >
             View Recipe →
-          </a>
+          </span>
         </div>
       </div>
     </article>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface RecipeCardProps {
     tag: string;
@@ -19,9 +20,11 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                                                           image,
                                                           bgColor = '#faf6ef',
                                                       }) => {
+    const navigate = useNavigate();
     return (
         <article
-            className="group flex flex-col overflow-hidden border border-charcoal bg-white transition-all duration-200"
+            onClick={() => navigate('/recipe')}
+            className="group flex flex-col overflow-hidden border border-charcoal bg-white transition-all duration-200 cursor-pointer"
             style={{}}
             onMouseEnter={e => {
                 e.currentTarget.style.boxShadow = '6px 6px 0px #1a1a1a';
@@ -65,12 +68,11 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                         <span className="text-sm text-charcoal">({reviews})</span>
                     </div>
 
-                    <a
-                        href="#"
+                    <span
                         className="border border-charcoal px-4 py-1.5 text-xs font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white"
                     >
                         View Recipe →
-                    </a>
+                    </span>
                 </div>
             </div>
         </article>

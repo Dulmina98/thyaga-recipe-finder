@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Clock, Fire, Trash } from '@phosphor-icons/react';
+import { useNavigate } from 'react-router-dom';
 import type { Recipe } from '../../data/favouritesMockData';
 
 export const FavouriteListRow: React.FC<{ recipe: Recipe; onRemove: (id: number) => void }> = ({ recipe, onRemove }) => {
   const [hovered, setHovered] = useState(false);
   const [removing, setRemoving] = useState(false);
+  const navigate = useNavigate();
 
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -14,6 +16,7 @@ export const FavouriteListRow: React.FC<{ recipe: Recipe; onRemove: (id: number)
 
   return (
     <article
+      onClick={() => navigate('/recipe')}
       className="flex gap-5 border border-[#1a1a1a] bg-white p-4 transition-all duration-300 cursor-pointer"
       style={{
         boxShadow: hovered ? '6px 6px 0px #1a1a1a' : 'none',
@@ -58,12 +61,11 @@ export const FavouriteListRow: React.FC<{ recipe: Recipe; onRemove: (id: number)
         >
           <Trash size={15} weight="bold" /> Remove
         </button>
-        <a
-          href="#"
+        <span
           className="border border-[#1a1a1a] px-4 py-1.5 text-xs font-semibold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-white whitespace-nowrap"
         >
           View Recipe →
-        </a>
+        </span>
       </div>
     </article>
   );

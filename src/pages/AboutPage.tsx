@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navigation } from '../components/Navigation';
+import { Footer } from '../components/Footer';
 import { ArrowRight } from '@phosphor-icons/react';
 import { TEAM, VALUES, MILESTONES, STATS, PRESS } from '../data/aboutMockData';
 
@@ -295,39 +296,7 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      <footer className="pt-16 pb-8 bg-[#000]">
-        <div className="layout-container">
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
-            <div className="lg:col-span-2">
-              <h3 className="text-[32px] font-bold">
-                <span className="text-white">Recipe</span><span className="text-[#E8500B]">Finder</span>
-              </h3>
-              <p className="mt-2 text-[18px] leading-6 max-w-xs text-[#CDCBC0]">
-                Your personal culinary companion. Discover, cook, and share recipes that move you.
-              </p>
-            </div>
-            {[
-              { heading: 'Platform', links: ['Explore', 'Recipes', 'Collections', 'Meal Planner'] },
-              { heading: 'Company', links: ['About', 'Blog', 'Careers', 'Press'] },
-              { heading: 'Legal', links: ['Privacy', 'Terms', 'Cookies'] },
-            ].map(col => (
-              <div key={col.heading}>
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-[#CDCBC0]">{col.heading}</h4>
-                <ul className="mt-4 space-y-3 text-sm">
-                  {col.links.map(l => (
-                    <li key={l}>
-                      <a href="#" className="text-[#CDCBC0] hover:text-white transition-colors">{l}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="mt-16 pt-8 text-sm text-[#CDCBC0]" style={{ borderTop: '1px solid #1A1A1A' }}>
-            © 2026 RecipeFinder. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
     </div>
   );

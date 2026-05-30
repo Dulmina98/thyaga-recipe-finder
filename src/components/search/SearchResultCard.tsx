@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Heart, Clock, Fire } from '@phosphor-icons/react';
+import { useNavigate } from 'react-router-dom';
 import { RECIPES } from '../../data/searchMockData';
 
 export const SearchResultCard: React.FC<{
@@ -7,9 +8,11 @@ export const SearchResultCard: React.FC<{
   onToggleSave: (id: number) => void;
 }> = ({ recipe, onToggleSave }) => {
   const [hovered, setHovered] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <article
+      onClick={() => navigate('/recipe')}
       className="flex flex-col overflow-hidden border border-[#1a1a1a] bg-white transition-all duration-200 cursor-pointer"
       style={{
         boxShadow: hovered ? '6px 6px 0px #1a1a1a' : 'none',
@@ -60,12 +63,11 @@ export const SearchResultCard: React.FC<{
             <Heart size={16} weight={recipe.saved ? "fill" : "regular"} color={recipe.saved ? "#E8500B" : "#1a1a1a"} />
             {recipe.saved ? 'Saved' : 'Save'}
           </button>
-          <a
-            href="#"
+          <span
             className="border border-[#1a1a1a] px-4 py-1.5 text-xs font-semibold text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-white"
           >
             View Recipe →
-          </a>
+          </span>
         </div>
       </div>
     </article>
