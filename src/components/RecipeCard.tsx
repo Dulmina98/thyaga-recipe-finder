@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface RecipeCardProps {
+    id?: string;
     tag: string;
     title: string;
     desc: string;
@@ -12,6 +13,7 @@ interface RecipeCardProps {
 }
 
 export const RecipeCard: React.FC<RecipeCardProps> = ({
+                                                          id,
                                                           tag,
                                                           title,
                                                           desc,
@@ -23,7 +25,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
     const navigate = useNavigate();
     return (
         <article
-            onClick={() => navigate('/recipe')}
+            onClick={() => navigate(id ? `/recipe/${id}` : '/search')}
             className="group flex flex-col overflow-hidden border border-charcoal bg-white transition-all duration-200 cursor-pointer"
             style={{}}
             onMouseEnter={e => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Heart } from '@phosphor-icons/react';
 
 export const EmptyState: React.FC<{ collection: string }> = ({ collection }) => (
@@ -12,11 +13,11 @@ export const EmptyState: React.FC<{ collection: string }> = ({ collection }) => 
         ? 'Start exploring and tap the heart on any recipe to save it here.'
         : `You haven't saved anything to "${collection}" yet.`}
     </p>
-    <a
-      href="#"
+    <Link
+      to="/search"
       className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-[#E8500B] bg-[#E8500B] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#c94008] transition-colors"
     >
       Explore Recipes
-    </a>
+    </Link>
   </div>
 );

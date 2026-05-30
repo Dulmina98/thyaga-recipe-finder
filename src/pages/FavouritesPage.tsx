@@ -1,41 +1,40 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MagnifyingGlass, SquaresFour, ListDashes } from '@phosphor-icons/react';
-import { INITIAL_FAVOURITES, COLLECTIONS, CUISINE_FILTERS } from '../data/favouritesMockData';
+import { COLLECTIONS, CUISINE_FILTERS } from '../data/favouritesMockData';
 import { FavouritesSidebar } from '../components/favourites/FavouritesSidebar';
 import { FavouriteGridCard } from '../components/favourites/FavouriteGridCard';
 import { FavouriteListRow } from '../components/favourites/FavouriteListRow';
 import { EmptyState } from '../components/favourites/EmptyState';
 import { Button } from '../components/ui/Button';
+import { useFavourites } from '../context/FavouritesContext';
 
 export const FavouritesPage: React.FC = () => {
-  const [favourites, setFavourites] = useState(INITIAL_FAVOURITES);
+  const { favourites, removeFavourite } = useFavourites();
   const [activeCollection, setActiveCollection] = useState('All Saved');
   const [activeCuisine, setActiveCuisine] = useState('All');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('Recently Saved');
 
-  const removeFromFavourites = (id: number) => {
-    setTimeout(() => setFavourites(prev => prev.filter(r => r.id !== id)), 310);
+  const removeFromFavourites = (id: string) => {
+    setTimeout(() => removeFavourite(id), 310);
   };
 
   const filtered = favourites.filter(r => {
-    const matchCollection = activeCollection === 'All Saved' || r.collection === activeCollection;
-    const matchCuisine = activeCuisine === 'All' || r.cuisine === activeCuisine;
+    const matchCuisine = activeCuisine === 'All' || r.area === activeCuisine;
     const matchSearch = r.title.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCollection && matchCuisine && matchSearch;
+    return matchCuisine && matchSearch;
   });
 
   const collectionCounts: Record<string, number> = {};
   COLLECTIONS.forEach(c => {
-    collectionCounts[c] = c === 'All Saved' ? favourites.length : favourites.filter(r => r.collection === c).length;
+    collectionCounts[c] = c === 'All Saved' ? favourites.length : 0;
   });
 
   return (
     <div className="min-h-screen font-sans" style={{ backgroundColor: '#FAF6EF' }}>
 
-      {/* ── Navigation ── */}
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#1a1a1a] bg-[#FAF6EF]">
         <div className="layout-container">
           <div className="relative flex h-16 items-center justify-between">
@@ -59,7 +58,6 @@ export const FavouritesPage: React.FC = () => {
         </div>
       </header>
 
-      {/* ── Main ── */}
       <main className="pt-16 layout-container">
         <div className="flex gap-10 pb-20">
 
@@ -70,12 +68,9 @@ export const FavouritesPage: React.FC = () => {
             totalFavourites={favourites.length}
           />
 
-          {/* ── Right: Content ── */}
           <div className="flex-1 min-w-0 pt-10">
 
-            {/* Top bar */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
-              {/* Search within favourites */}
               <div className="relative flex-1 min-w-48 max-w-sm">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1a1a1a] opacity-40">
                   <MagnifyingGlass size={16} weight="bold" />
@@ -89,7 +84,6 @@ export const FavouritesPage: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-3 ml-auto">
-                {/* Sort */}
                 <select
                   value={sortBy}
                   onChange={e => setSortBy(e.target.value)}
@@ -98,7 +92,6 @@ export const FavouritesPage: React.FC = () => {
                   {['Recently Saved', 'Rating', 'Cook Time', 'A → Z'].map(o => <option key={o}>{o}</option>)}
                 </select>
 
-                {/* View toggle */}
                 <div className="flex border-2 border-[#1a1a1a] overflow-hidden">
                   <button
                     onClick={() => setViewMode('grid')}
@@ -116,7 +109,6 @@ export const FavouritesPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Cuisine filter pills */}
             <div className="flex flex-wrap gap-2 mb-8">
               {CUISINE_FILTERS.map(c => (
                 <button
@@ -136,7 +128,6 @@ export const FavouritesPage: React.FC = () => {
               </span>
             </div>
 
-            {/* Collection header */}
             {activeCollection !== 'All Saved' && (
               <div className="mb-6 flex items-center gap-3">
                 <div className="w-1 h-6 bg-[#E8500B]" />
@@ -144,7 +135,6 @@ export const FavouritesPage: React.FC = () => {
               </div>
             )}
 
-            {/* Empty state or grid/list */}
             {filtered.length === 0 ? (
               <EmptyState collection={activeCollection} />
             ) : viewMode === 'grid' ? (
@@ -161,7 +151,6 @@ export const FavouritesPage: React.FC = () => {
               </div>
             )}
 
-            {/* Banner CTA at bottom */}
             {filtered.length > 0 && (
               <div className="mt-12 border-2 border-[#1a1a1a] bg-[#1a1a1a] p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>

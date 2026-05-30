@@ -14,6 +14,16 @@ const searchTags = [
 
 export const SearchSection: React.FC = () => {
   const navigate = useNavigate();
+  const [query, setQuery] = React.useState('');
+
+  const handleSearch = () => {
+    if (query.trim()) navigate(`/search?q=${encodeURIComponent(query.trim())}`);
+    else navigate('/search');
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') handleSearch();
+  };
 
   return (
     <section className="pt-20 lg:pt-28 bg-peach-cream">
@@ -27,17 +37,20 @@ export const SearchSection: React.FC = () => {
             <MagnifyingGlass className="absolute left-6 top-1/2 -translate-y-1/2 text-charcoal" size={24} weight="bold" />
             <input
               type="text"
-              placeholder="Search"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Search recipes or ingredients…"
               className="bg-white w-full rounded-full py-4 pl-14 pr-14 focus:outline-none focus:ring-2 focus:ring-mandarin border-2 border-space-black"
             />
-            <Button size="icon" className="absolute px-4 right-2 top-1/2 -translate-y-1/2" onClick={() => navigate('/search')}>
+            <Button size="icon" className="absolute px-4 right-2 top-1/2 -translate-y-1/2" onClick={handleSearch}>
               Search
             </Button>
           </div>
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           {searchTags.map(({ label, Icon }) => (
-            <Button key={label} variant="outline" className="flex items-center gap-2">
+            <Button key={label} variant="outline" className="flex items-center gap-2" onClick={() => navigate(`/search?q=${encodeURIComponent(label)}`)}>
               <Icon weight="fill" size={18} className="text-mandarin" />
               <span>{label}</span>
             </Button>
