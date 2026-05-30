@@ -8,23 +8,23 @@ const stats = [
 ];
 
 const statBoxColors = [
-  { bg: 'bg-mandarin', valuColor: 'text-white', labelColor: 'text-white' },
+  { bg: 'bg-light-orange', valuColor: 'text-white', labelColor: 'text-white' },
   { bg: 'bg-charcoal', valuColor: 'text-white', labelColor: 'text-ghost-ash' },
-  { bg: 'bg-mandarin', valuColor: 'text-white', labelColor: 'text-white' },
-  { bg: 'bg-charcoal', valuColor: 'text-white', labelColor: 'text-ghost-ash' },
+  { bg: 'bg-charcoal', valuColor: 'text-white', labelColor: 'text-white' },
+  { bg: 'bg-light-orange', valuColor: 'text-white', labelColor: 'text-ghost-ash' },
 ];
 
 export const WhySection: React.FC = () => {
   return (
-    <section className="py-20 lg:py-28 bg-space-black">
+    <section className="py-20 lg:py-28 bg-mandarin">
       <div className="layout-container">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-sm font-bold uppercase tracking-wider text-mandarin">Why RecipeFinder</p>
             <h2 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl text-white">
-              Food Is<br />Personal.<br />We Get It.
+              Food Is<br />Personal.<br /><span className={"text-charcoal"}>We Get It.</span>
             </h2>
-            <p className="mt-6 text-lg leading-8 text-ghost-ash">
+            <p className="mt-6 text-lg leading-8 text-white">
               RecipeFinder isn't just a recipe database. It's a living, breathing culinary companion that learns your palate, respects your pantry, and elevates your cooking — one dish at a time.
             </p>
           </div>

@@ -20,7 +20,18 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                                                           bgColor = '#faf6ef',
                                                       }) => {
     return (
-        <article className="group flex flex-col overflow-hidden border border-charcoal bg-white">
+        <article
+            className="group flex flex-col overflow-hidden border border-charcoal bg-white transition-all duration-200"
+            style={{}}
+            onMouseEnter={e => {
+                e.currentTarget.style.boxShadow = '6px 6px 0px #1a1a1a';
+                e.currentTarget.style.transform = 'translate(-2px, -2px)';
+            }}
+            onMouseLeave={e => {
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translate(0, 0)';
+            }}
+        >
             <div className="relative h-56 overflow-hidden">
                 {image ? (
                     <img
