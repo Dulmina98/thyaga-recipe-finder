@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from './ui/Button';
 import { Pizza, Fire, Plant, Fish, Cake, Coffee, MagnifyingGlass } from '@phosphor-icons/react';
 
@@ -12,6 +13,8 @@ const searchTags = [
 ];
 
 export const SearchSection: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="pt-20 lg:pt-28 bg-peach-cream">
       <div className="layout-container text-center">
@@ -27,7 +30,7 @@ export const SearchSection: React.FC = () => {
               placeholder="Search"
               className="bg-white w-full rounded-full py-4 pl-14 pr-14 focus:outline-none focus:ring-2 focus:ring-mandarin border-2 border-space-black"
             />
-            <Button  size="icon" className="absolute px-4 right-2 top-1/2 -translate-y-1/2">
+            <Button size="icon" className="absolute px-4 right-2 top-1/2 -translate-y-1/2" onClick={() => navigate('/search')}>
               Search
             </Button>
           </div>
