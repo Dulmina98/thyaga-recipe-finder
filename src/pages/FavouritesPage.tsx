@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MagnifyingGlass, SquaresFour, ListDashes } from '@phosphor-icons/react';
+import { MagnifyingGlass, SquaresFour, ListDashes, CaretDown } from '@phosphor-icons/react';
 import { COLLECTIONS, CUISINE_FILTERS } from '../data/favouritesMockData';
 import { FavouritesSidebar } from '../components/favourites/FavouritesSidebar';
 import { FavouriteGridCard } from '../components/favourites/FavouriteGridCard';
@@ -59,7 +59,7 @@ export const FavouritesPage: React.FC = () => {
       </header>
 
       <main className="pt-16 layout-container">
-        <div className="flex gap-10 pb-20">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-10 pb-20">
 
           <FavouritesSidebar
             activeCollection={activeCollection}
@@ -68,7 +68,7 @@ export const FavouritesPage: React.FC = () => {
             totalFavourites={favourites.length}
           />
 
-          <div className="flex-1 min-w-0 pt-10">
+          <div className="flex-1 min-w-0 lg:pt-10">
 
             <div className="flex flex-wrap items-center gap-4 mb-6">
               <div className="relative flex-1 min-w-48 max-w-sm">
@@ -83,14 +83,19 @@ export const FavouritesPage: React.FC = () => {
                 />
               </div>
 
-              <div className="flex items-center gap-3 ml-auto">
-                <select
-                  value={sortBy}
-                  onChange={e => setSortBy(e.target.value)}
-                  className="border-2 border-[#1a1a1a] bg-white text-sm font-semibold text-[#1a1a1a] py-2 px-3 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E8500B] cursor-pointer"
-                >
-                  {['Recently Saved', 'Rating', 'Cook Time', 'A → Z'].map(o => <option key={o}>{o}</option>)}
-                </select>
+              <div className="flex items-center gap-3">
+                <div className="relative">
+                  <select
+                    value={sortBy}
+                    onChange={e => setSortBy(e.target.value)}
+                    className="appearance-none border-2 border-[#1a1a1a] bg-white text-sm font-semibold text-[#1a1a1a] py-2 pl-3 pr-8 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E8500B] cursor-pointer"
+                  >
+                    {['Recently Saved', 'Rating', 'Cook Time', 'A → Z'].map(o => <option key={o}>{o}</option>)}
+                  </select>
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#1a1a1a]">
+                    <CaretDown size={12} weight="bold" />
+                  </span>
+                </div>
 
                 <div className="flex border-2 border-[#1a1a1a] overflow-hidden">
                   <button

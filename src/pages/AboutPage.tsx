@@ -70,22 +70,29 @@ export const AboutPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="hidden lg:flex w-full lg:w-1/2 flex-col border-l-2 border-[#1a1a1a]">
-              {STATS.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={`flex-1 flex flex-col justify-center px-12 border-b-2 border-[#1a1a1a] last:border-b-0 transition-colors duration-200 group cursor-default ${
-                    i % 2 === 0 ? 'bg-[#FAF6EF] hover:bg-[#E8500B]' : 'bg-[#1a1a1a] hover:bg-[#E8500B]'
-                  }`}
-                >
-                  <p className={`text-5xl font-bold transition-colors ${i % 2 === 0 ? 'text-[#E8500B] group-hover:text-white' : 'text-white group-hover:text-white'}`}>
-                    {stat.value}
-                  </p>
-                  <p className={`mt-1 text-sm font-medium transition-colors ${i % 2 === 0 ? 'text-[#1a1a1a] group-hover:text-white/80' : 'text-[#CDCBC0] group-hover:text-white/80'}`}>
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+            {/* Stats: 2x2 grid on mobile, full column on lg */}
+            <div className="w-full lg:w-1/2 border-2 lg:border-0 lg:border-l-2 border-t-2 border-[#1a1a1a] overflow-hidden lg:flex lg:flex-col">
+              <div className="grid grid-cols-2 lg:grid-cols-1 lg:h-full">
+                {STATS.map((stat, i) => (
+                  <div
+                    key={stat.label}
+                    className={`flex flex-col justify-center px-8 py-8 lg:flex-1 lg:px-12 transition-colors duration-200 group cursor-default
+                      ${i % 2 === 0 ? 'border-r-2' : ''} 
+                      ${i < 2 ? 'border-b-2' : ''}
+                      border-[#1a1a1a]
+                      ${i % 2 === 0 ? 'bg-[#FAF6EF] hover:bg-[#E8500B]' : 'bg-[#1a1a1a] hover:bg-[#E8500B]'}
+                      lg:border-r-0 lg:border-b-2 lg:last:border-b-0
+                    `}
+                  >
+                    <p className={`text-4xl lg:text-5xl font-bold transition-colors ${i % 2 === 0 ? 'text-[#E8500B] group-hover:text-white' : 'text-white group-hover:text-white'}`}>
+                      {stat.value}
+                    </p>
+                    <p className={`mt-1 text-sm font-medium transition-colors ${i % 2 === 0 ? 'text-[#1a1a1a] group-hover:text-white/80' : 'text-[#CDCBC0] group-hover:text-white/80'}`}>
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
@@ -150,19 +157,28 @@ export const AboutPage: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
 
             <div className="flex-1 relative">
+              {/* Vertical line: hidden on mobile, shown md+ */}
               <div className="hidden md:block absolute w-px bg-[#1a1a1a]" style={{ left: 160, top: 0, bottom: 0 }} />
+              {/* Mobile vertical line on left */}
+              <div className="md:hidden absolute left-4 top-0 bottom-0 w-px bg-[#1a1a1a]/20" />
 
               <div className="flex flex-col">
                 {MILESTONES.map((m, i) => (
-                  <div key={i} className="flex items-center group">
-                    <div className="hidden md:block w-36 flex-shrink-0 text-right pr-6">
+                  <div key={i} className="flex items-start group">
+                    {/* Desktop: year label on left */}
+                    <div className="hidden md:block w-36 flex-shrink-0 text-right pr-6 pt-7">
                       <span className="text-xs font-bold uppercase tracking-wider text-[#E8500B]">{m.year}</span>
                     </div>
-                    <div className="hidden md:flex w-8 flex-shrink-0 items-center justify-center z-10">
+                    {/* Desktop: dot */}
+                    <div className="hidden md:flex w-8 flex-shrink-0 items-center justify-center z-10 pt-7">
                       <div className="w-4 h-4 rounded-full border-2 border-[#E8500B] bg-[#F0EAE0] group-hover:bg-[#E8500B] transition-colors" />
                     </div>
-                    <div className="flex-1 py-7 pl-8 border-b border-[#1a1a1a]/10 last:border-b-0">
-                      <p className="md:hidden text-xs font-bold uppercase tracking-wider text-[#E8500B] mb-1">{m.year}</p>
+                    {/* Mobile: dot on left */}
+                    <div className="md:hidden flex-shrink-0 w-8 flex items-start justify-center pt-7">
+                      <div className="w-4 h-4 rounded-full border-2 border-[#E8500B] bg-[#F0EAE0] group-hover:bg-[#E8500B] transition-colors z-10 relative" />
+                    </div>
+                    <div className="flex-1 py-7 pl-4 md:pl-8 border-b border-[#1a1a1a]/10 last:border-b-0">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#E8500B] mb-1">{m.year}</p>
                       <p className="text-[15px] text-[#1a1a1a] leading-relaxed">{m.event}</p>
                     </div>
                   </div>
