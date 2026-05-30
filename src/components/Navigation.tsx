@@ -4,7 +4,7 @@ import { Button } from './ui/Button';
 export const Navigation: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-charcoal bg-peach-cream">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="layout-container">
         <div className="relative flex h-16 items-center justify-between">
           
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-charcoal">

@@ -4,7 +4,7 @@ import { Button } from './ui/Button';
 export const CTASection: React.FC = () => {
   return (
     <section className="py-24 lg:py-32 bg-peach-cream">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="layout-container">
         <div
           className="border-2 px-8 py-16 text-center"
         >

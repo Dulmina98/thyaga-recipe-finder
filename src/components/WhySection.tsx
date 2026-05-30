@@ -17,7 +17,7 @@ const statBoxColors = [
 export const WhySection: React.FC = () => {
   return (
     <section className="py-20 lg:py-28 bg-space-black">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="layout-container">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-sm font-bold uppercase tracking-wider text-mandarin">Why RecipeFinder</p>
