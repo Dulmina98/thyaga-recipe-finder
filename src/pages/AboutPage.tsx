@@ -71,7 +71,7 @@ export const AboutPage: React.FC = () => {
             </div>
 
             {/* Stats: 2x2 grid on mobile, full column on lg */}
-            <div className="w-full lg:w-1/2 border-2 lg:border-0 lg:border-l-2 border-t-2 border-[#1a1a1a] overflow-hidden lg:flex lg:flex-col">
+            <div className="w-full mb-5 lg:mb-0 lg:w-1/2 border-2 lg:border-0 lg:border-l-2 border-t-2 border-[#1a1a1a] overflow-hidden lg:flex lg:flex-col">
               <div className="grid grid-cols-2 lg:grid-cols-1 lg:h-full">
                 {STATS.map((stat, i) => (
                   <div
