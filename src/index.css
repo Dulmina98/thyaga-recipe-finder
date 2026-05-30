@@ -3,7 +3,7 @@
 
 @theme {
   --font-sans: "Space Grotesk", sans-serif;
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee: marquee 60s linear infinite;
 
     --color-mandarin: #E8500B;
     --color-space-black: #000000;
