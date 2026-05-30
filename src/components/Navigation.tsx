@@ -22,7 +22,7 @@ export const Navigation: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-6 text-sm font-medium text-charcoal">
-            <a href="#" className="hidden md:block transition-colors hover:text-mandarin">Favorites</a>
+            <Link to="/favourites" className="hidden md:block transition-colors hover:text-mandarin">Favorites</Link>
             <a href="#" className="hidden md:block transition-colors hover:text-mandarin">About</a>
             <Button  size="sm">Sign up</Button>
           </div>
