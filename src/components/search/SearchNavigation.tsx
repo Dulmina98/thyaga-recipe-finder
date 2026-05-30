@@ -40,7 +40,7 @@ export const SearchNavigation: React.FC<SearchNavigationProps> = ({ query, setQu
 
           <div className="flex items-center gap-6 text-sm font-medium text-[#1a1a1a]">
             <Link to="/favourites" className="hidden md:block hover:text-[#E8500B] transition-colors">Favorites</Link>
-            <a href="#" className="hidden md:block hover:text-[#E8500B] transition-colors">About</a>
+            <Link to="/about" className="hidden md:block hover:text-[#E8500B] transition-colors">About</Link>
             <Button size="sm">Sign Up</Button>
           </div>
         </div>

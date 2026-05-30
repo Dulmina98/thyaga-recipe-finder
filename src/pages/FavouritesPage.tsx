@@ -52,7 +52,7 @@ export const FavouritesPage: React.FC = () => {
 
             <div className="flex items-center gap-6 text-sm font-medium text-[#1a1a1a]">
               <Link to="/favourites" className="hidden md:block font-bold text-[#E8500B]">Favorites</Link>
-              <a href="#" className="hidden md:block transition-colors hover:text-[#E8500B]">About</a>
+              <Link to="/about" className="hidden md:block transition-colors hover:text-[#E8500B]">About</Link>
               <Button size="sm">Sign Up</Button>
             </div>
           </div>
