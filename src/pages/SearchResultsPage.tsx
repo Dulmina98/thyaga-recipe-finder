@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { WarningCircle, SmileyXEyes } from '@phosphor-icons/react';
+import { WarningCircle, SmileyXEyes, CaretDown } from '@phosphor-icons/react';
 import { SearchSidebar } from '../components/search/SearchSidebar';
 import { SearchResultCard } from '../components/search/SearchResultCard';
 import { smartSearch, searchByCategory } from '../services/mealdb';
@@ -218,7 +218,7 @@ export const SearchResultsPage: React.FC = () => {
         </div>
 
         {/* ── Two-col layout ── */}
-        <div className="flex gap-10 pb-20">
+        <div className="flex flex-col lg:flex-row gap-10 pb-20">
 
           <SearchSidebar
             mealTypes={mealTypes} setMealTypes={setMealTypes}
@@ -239,15 +239,20 @@ export const SearchResultsPage: React.FC = () => {
                 </p>
                 <div className="flex items-center gap-2">
                   <label className="text-sm text-[#1a1a1a] opacity-70 font-medium">Sort by:</label>
-                  <select
-                    value={sortBy}
-                    onChange={e => setSortBy(e.target.value)}
-                    className="border-2 border-[#1a1a1a] bg-white text-sm font-semibold text-[#1a1a1a] py-1.5 px-3 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E8500B] cursor-pointer"
-                  >
-                    {['Relevance', 'A → Z', 'Z → A'].map(opt => (
-                      <option key={opt}>{opt}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={sortBy}
+                      onChange={e => setSortBy(e.target.value)}
+                      className="appearance-none border-2 border-[#1a1a1a] bg-white text-sm font-semibold text-[#1a1a1a] py-1.5 pl-3 pr-8 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E8500B] cursor-pointer"
+                    >
+                      {['Relevance', 'A → Z', 'Z → A'].map(opt => (
+                        <option key={opt}>{opt}</option>
+                      ))}
+                    </select>
+                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#1a1a1a]">
+                      <CaretDown size={12} weight="bold" />
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
