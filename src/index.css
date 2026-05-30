@@ -29,8 +29,8 @@
   max-width: 1800px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: clamp(16px, 5vw, 100px);
+  padding-right: clamp(16px, 5vw, 100px);
 }
 
 .card:hover {
